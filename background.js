@@ -1,6 +1,6 @@
 chrome.action.onClicked.addListener(async (tab) => {
 	// Define the base URL for the archive search with a placeholder for the target URL
-	const archiveBaseUrl = "https://archive.ph/search/?q={dest_url}#gsc.tab=0&gsc.q=qwerty&gsc.page=1";
+	const archiveBaseUrl = "https://archive.ph/search/?q={dest_url}";
 
 	// Get the URL of the current tab
 	const currentUrl = tab.url;
