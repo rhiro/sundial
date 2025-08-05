@@ -7,11 +7,19 @@ chrome.action.onClicked.addListener(async (tab) => {
 
   // Check if the current URL exists
   if (currentUrl) {
-    // Encode the current URL to ensure it's safe for a URL query parameter
-    const encodedCurrentUrl = encodeURIComponent(currentUrl);
+		const urlObject = new URL(currentUrl);
 
-    // Replace the placeholder in the archive base URL with the encoded current URL
-    const newUrl = archiveBaseUrl.replace("{dest_url}", encodedCurrentUrl);
+		// Construct the URL without query parameters or hash.
+    // This combines the origin (protocol + hostname + port) and the pathname.
+		// Without this step, the search is likely to fail in the archive page, since
+		// query params can be noisy.
+    targetUrl = urlObject.origin + urlObject.pathname;
+
+    // Encode the current URL to ensure it's safe for a URL query parameter
+    const encodedTargetUrl = encodeURIComponent(targetUrl);
+
+    // Replace the placeholder in the archive base URL with the encoded target URL
+    const newUrl = archiveBaseUrl.replace("{dest_url}", encodedTargetUrl);
 
     // Update the current tab's URL to the newly constructed archive URL
     try {
