@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Archive URL Redirector",
+  "name": "Sundial (Archive URL redirector)",
   "version": "1.0",
   "description": "Redirects the current page's URL to an archive search query.",
   "permissions": [
